@@ -175,32 +175,6 @@ def time_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-        
-
-def station_stats(df):
-    """Displays statistics on the most popular stations and trip."""
-
-    print('\nCalculating The Most Popular Stations and Trip...\n')
-    start_time = time.time()
-    df_df = pd.DataFrame(df[['Start Station', 'End Station']])
-
-
-    # display most commonly used start station
-    start_station_count = df_df.groupby(['Start Station'])['Start Station'].count().sort_values().groupby(level=0).tail(1)
-    print('The most commonly used Start Station is: ',start_station_count.last_valid_index())
-
-    # display most commonly used end station
-    end_station_count = df_df.groupby(['End Station'])['End Station'].count().sort_values().groupby(level=0).tail(1)
-    print('The most commonly used End Station is: ', end_station_count.last_valid_index())
-
-    # display most frequent combination of start station and end station trip
-    mixed_stations = df_df.groupby(['Start Station','End Station']).size().sort_values().groupby(level=0).tail(1)
-    mixed_stations = pd.DataFrame(mixed_stations)
-    print('The most frequent combination of Start,End stations trip: ',mixed_stations.last_valid_index())
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
-
-
 
 
 def user_stats(df, city):
@@ -253,10 +227,7 @@ def main():
         df = load_data(city, month, day)
 
         time_stats(df)
-        station_stats(df)
-
         user_stats(df, city)
-
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
