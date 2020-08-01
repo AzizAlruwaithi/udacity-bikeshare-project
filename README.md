@@ -1,7 +1,3 @@
-## Date Created
-Aug 1, 2020
-
-
 ## Project Title
 US bikeshare Data Analysis
 
@@ -12,3 +8,4 @@ The objective of this project is to provide the user with the analyzed data of b
 
 ## Author
 Abdulaziz Alruwaithi
+Aug 1, 2020
